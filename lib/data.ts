@@ -25,7 +25,6 @@ export type Project = {
   blurb: string;
   tags: string[];
   accent: string;
-  link: string;
 };
 
 export const PROJECTS: Project[] = [
@@ -38,7 +37,6 @@ export const PROJECTS: Project[] = [
       "A location-based emergency home healthcare platform for the Kashmir region. The product requirements document is written and the platform is being built.",
     tags: ["Healthcare", "Location-based", "Kashmir"],
     accent: "#ff3b4e",
-    link: "https://red-pluse-kashmir.netlify.app",
   },
 ];
 
