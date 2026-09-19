@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Avatar from "./Avatar";
 import { Icon } from "./icons";
-import { ACHIEVEMENTS, SITE, type Achievement } from "@/lib/data";
+import { ABOUT, ACHIEVEMENTS, SITE, type Achievement } from "@/lib/data";
 
 function Milestone({ item }: { item: Achievement }) {
   const ref = useRef<HTMLElement>(null);
@@ -55,7 +55,7 @@ export default function About() {
           <div className="max-w-xl">
             <h2 className="font-display text-3xl font-extrabold sm:text-5xl">About</h2>
             <p className="mt-4 text-lg leading-relaxed text-white/75">
-              I build apps for competitive gamers and tune the hardware they play on.
+              {ABOUT.intro}
             </p>
           </div>
           {ACHIEVEMENTS.map((a) => (

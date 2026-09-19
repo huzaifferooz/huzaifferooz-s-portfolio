@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
 import * as THREE from "three";
@@ -13,19 +13,31 @@ type Props = {
   setActive: (i: number | null) => void;
 };
 
+// Spreads n points evenly over a sphere so many tiles never stack up
+function fibSphere(n: number, r: number): [number, number, number][] {
+  const golden = Math.PI * (3 - Math.sqrt(5));
+  return Array.from({ length: n }, (_, i) => {
+    const y = 1 - (i / (n - 1)) * 2;
+    const ring = Math.sqrt(1 - y * y);
+    const t = golden * i;
+    return [Math.cos(t) * ring * r, y * r * 0.9, Math.sin(t) * ring * r];
+  });
+}
+
 function Orbit({ active, setActive }: Props) {
   const group = useRef<THREE.Group>(null);
   const core = useRef<THREE.Mesh>(null);
   const speed = useRef(0.25);
   const { viewport } = useThree();
-  const R = Math.min(2.4, viewport.width * 0.28);
+  const R = Math.min(2.9, viewport.width * 0.32);
+  const points = useMemo(() => fibSphere(SKILLS.length, R), [R]);
 
   useFrame((_, dt) => {
     const g = group.current;
     if (!g) return;
     speed.current = THREE.MathUtils.damp(speed.current, active === null ? 0.25 : 0.02, 4, dt);
     g.rotation.y += dt * speed.current;
-    g.rotation.x = THREE.MathUtils.damp(g.rotation.x, 0.35 + pointer.y * 0.2, 3, dt);
+    g.rotation.x = THREE.MathUtils.damp(g.rotation.x, 0.2 + pointer.y * 0.2, 3, dt);
     g.rotation.z = THREE.MathUtils.damp(g.rotation.z, pointer.x * 0.1, 3, dt);
     if (core.current) core.current.rotation.y -= dt * 0.15;
   });
@@ -56,35 +68,29 @@ function Orbit({ active, setActive }: Props) {
       </mesh>
 
       {SKILLS.map((s, i) => {
-        const a = (i / SKILLS.length) * Math.PI * 2;
-        const pos: [number, number, number] = [
-          Math.cos(a) * R,
-          i % 2 === 0 ? 0.45 : -0.45,
-          Math.sin(a) * R,
-        ];
         const on = active === i;
         return (
-          <Html key={s.title} position={pos} center distanceFactor={6} zIndexRange={[20, 0]}>
+          <Html key={s.title} position={points[i]} center distanceFactor={5.5} zIndexRange={[20, 0]}>
             <button
               type="button"
               onPointerEnter={() => setActive(i)}
               onPointerLeave={() => setActive(null)}
               onClick={() => setActive(on ? null : i)}
               aria-pressed={on}
-              className="glass flex items-center gap-3 whitespace-nowrap rounded-2xl px-4 py-3 text-left transition-transform duration-300"
+              className="glass flex items-center gap-2 whitespace-nowrap rounded-xl px-3 py-2 text-left transition-transform duration-300"
               style={{
                 borderColor: on ? s.color : undefined,
-                boxShadow: on ? `0 0 32px -4px ${s.color}` : undefined,
+                boxShadow: on ? `0 0 28px -4px ${s.color}` : undefined,
                 transform: on ? "scale(1.12)" : undefined,
               }}
             >
               <span
-                className="grid h-9 w-9 place-items-center rounded-xl"
+                className="grid h-7 w-7 place-items-center rounded-lg"
                 style={{ background: `${s.color}26`, color: s.color }}
               >
-                <Icon name={s.icon} />
+                <Icon name={s.icon} className="h-4 w-4" />
               </span>
-              <span className="text-sm font-semibold text-white">{s.short}</span>
+              <span className="text-xs font-semibold text-white">{s.short}</span>
             </button>
           </Html>
         );

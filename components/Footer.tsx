@@ -11,7 +11,7 @@ export default function Footer() {
       className="relative flex min-h-[92svh] flex-col justify-between overflow-hidden px-[6vw] pb-8 pt-[18vh]"
     >
       <p className="max-w-md text-lg text-white/70">
-        Have an app, a tool or a team that needs shipping? Send me a message.
+        Want to collaborate or just say hello? Send me a message.
       </p>
 
       <div>
@@ -37,7 +37,21 @@ export default function Footer() {
             <br className="sm:hidden" /> Build
           </motion.span>
         </motion.a>
-        <p className="mt-6 text-white/60">{SITE.email}</p>
+        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-white/70">
+          <a href={`mailto:${SITE.email}`} className="underline-offset-4 hover:text-white hover:underline">
+            {SITE.email}
+          </a>
+          {SITE.github && (
+            <a
+              href={SITE.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline-offset-4 hover:text-white hover:underline"
+            >
+              GitHub
+            </a>
+          )}
+        </div>
       </div>
 
       <div className="mt-16 flex items-center justify-between text-sm text-white/50">

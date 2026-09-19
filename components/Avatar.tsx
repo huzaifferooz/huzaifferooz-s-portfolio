@@ -5,7 +5,7 @@ export default function Avatar() {
       viewBox="0 0 400 500"
       className="h-full w-full"
       role="img"
-      aria-label="Illustrated portrait of Huzaif Ferooz wearing a gaming headset"
+      aria-label="Illustrated portrait of Huzaif Ferooz wearing glasses"
     >
       <defs>
         <linearGradient id="av-bg" x1="0" y1="0" x2="1" y2="1">
@@ -63,17 +63,15 @@ export default function Avatar() {
         fill="#0c0d1a"
         stroke="rgba(255,255,255,0.12)"
       />
-      {/* visor glow + visor */}
-      <rect x="132" y="214" width="136" height="34" rx="17" fill="url(#av-neon)" opacity="0.6" filter="url(#av-blur)" />
-      <rect x="132" y="214" width="136" height="34" rx="17" fill="url(#av-neon)" opacity="0.92" />
-      {/* headset band */}
-      <path d="M112 236 C108 128 292 128 288 236" fill="none" stroke="#12142a" strokeWidth="14" strokeLinecap="round" />
-      <path d="M112 236 C108 128 292 128 288 236" fill="none" stroke="url(#av-neon)" strokeWidth="3" strokeLinecap="round" />
-      <rect x="94" y="212" width="34" height="74" rx="16" fill="#12142a" stroke="url(#av-neon)" strokeWidth="2.5" />
-      <rect x="272" y="212" width="34" height="74" rx="16" fill="#12142a" stroke="url(#av-neon)" strokeWidth="2.5" />
-      {/* mic boom */}
-      <path d="M100 280 C102 322 140 328 170 322" fill="none" stroke="#12142a" strokeWidth="6" strokeLinecap="round" />
-      <circle cx="172" cy="322" r="7" fill="#22e1ff" />
+      {/* glasses */}
+      <circle cx="168" cy="236" r="24" fill="rgba(34,225,255,0.08)" stroke="url(#av-neon)" strokeWidth="4" />
+      <circle cx="232" cy="236" r="24" fill="rgba(34,225,255,0.08)" stroke="url(#av-neon)" strokeWidth="4" />
+      <path d="M192 234 Q200 228 208 234M144 232 L124 226M256 232 L276 226" fill="none" stroke="url(#av-neon)" strokeWidth="4" strokeLinecap="round" />
+      <circle cx="168" cy="236" r="4" fill="rgba(255,255,255,0.85)" />
+      <circle cx="232" cy="236" r="4" fill="rgba(255,255,255,0.85)" />
+      {/* code glyphs */}
+      <text x="42" y="120" fontSize="34" fontFamily="monospace" fill="url(#av-neon)" opacity="0.7">&lt;/&gt;</text>
+      <text x="300" y="90" fontSize="34" fontFamily="monospace" fill="url(#av-neon)" opacity="0.7">{"{ }"}</text>
       <path d="M182 296 Q200 304 218 296" stroke="rgba(255,255,255,0.25)" strokeWidth="3" fill="none" strokeLinecap="round" />
     </svg>
   );

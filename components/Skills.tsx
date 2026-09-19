@@ -20,7 +20,7 @@ export default function Skills() {
         <div>
           <h2 className="font-display text-3xl font-extrabold sm:text-5xl">Skills</h2>
           <p className="mt-3 max-w-[38ch] text-white/70">
-            Four areas I work in every week. Hover or tap a tile to read more.
+            Languages and tools I'm learning and using. Hover or tap a tile to read more.
           </p>
           <div className="glass mt-8 min-h-[9rem] rounded-2xl p-5" aria-live="polite">
             <AnimatePresence mode="wait">

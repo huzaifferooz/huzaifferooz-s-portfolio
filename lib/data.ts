@@ -1,21 +1,27 @@
 // All copy lives here. Edit this file to change the site.
+import type { IconName } from "@/components/icons";
 
 export const SITE = {
   name: "Huzaif Ferooz",
-  role: "Software Developer",
-  tagline: "Building the Future of Esports & Tech",
-  // TODO: replace with your real address
-  email: "hello@example.com",
+  role: "BCA Student",
+  tagline: "Learning and building software at GDC Pulwama",
+  email: "huzaifibniferooz@gmail.com",
+  github: "https://github.com/huzaifferooz", // set to "" to hide the link
   // Put a photo in /public and set e.g. "/avatar.jpg" to replace the illustrated avatar
   avatar: null as string | null,
 };
 
-export type ProjectId = "scrimmed" | "shockshield" | "roms" | "zelta";
+// Text for the About section
+export const ABOUT = {
+  intro:
+    "I'm a BCA student at Govt. Degree College Pulwama (GDC Pulwama). I'm learning to build software with C, Python and Node.js, and working on Red Pulse Kashmir, a home healthcare platform.",
+};
 
 export type Project = {
-  id: ProjectId;
+  id: string;
   title: string;
   kind: string;
+  status?: string; // shows a pulsing badge, e.g. "In development"
   blurb: string;
   tags: string[];
   accent: string;
@@ -23,118 +29,67 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    id: "scrimmed",
-    title: "Scrimmed",
-    kind: "Mobile app",
+    id: "redpulse",
+    title: "Red Pulse Kashmir",
+    kind: "Healthcare platform",
+    status: "In development",
     blurb:
-      "A professional networking app for esports players. Build a player profile, find teammates and get found by squads.",
-    tags: ["Mobile", "Networking", "Esports"],
-    accent: "#8b5cff",
-  },
-  {
-    id: "shockshield",
-    title: "ShockShield",
-    kind: "Hardware and IoT",
-    blurb:
-      "A smart home wiring safety system that detects electrical faults and isolates the affected circuit.",
-    tags: ["IoT", "Embedded", "Safety"],
-    accent: "#ffb020",
-  },
-  {
-    id: "roms",
-    title: "Custom Android ROMs",
-    kind: "Operating systems",
-    blurb:
-      "Performance tuning, kernel modifications and custom OS builds for competitive gaming. Built on the Redmi Note 10S and OnePlus 7T.",
-    tags: ["LineageOS", "Kernel", "Performance"],
-    accent: "#22e1ff",
-  },
-  {
-    id: "zelta",
-    title: "ZELTA OG Branding",
-    kind: "Video and brand design",
-    blurb:
-      "High-end video editing, channel logos and branding assets for ZELTA OG.",
-    tags: ["Video editing", "Logo design", "Branding"],
-    accent: "#ff3d9a",
+      "A location-based emergency home healthcare platform for the Kashmir region. The product requirements document is written and the platform is being built.",
+    tags: ["Healthcare", "Location-based", "Kashmir"],
+    accent: "#ff3b4e",
   },
 ];
-
-// Swap `src` for real images to replace the placeholder tiles in the ZELTA gallery
-export const ZELTA_MEDIA: { label: string; src?: string }[] = [
-  { label: "Channel logo" },
-  { label: "Thumbnail" },
-  { label: "Banner" },
-  { label: "Edit timeline" },
-];
-
-export type SkillIconName = "code" | "android" | "pen" | "film";
 
 export const SKILLS: {
   title: string;
   short: string;
   detail: string;
-  icon: SkillIconName;
+  icon: IconName;
   color: string;
 }[] = [
-  {
-    title: "C Programming & Software Architecture",
-    short: "C & Architecture",
-    detail: "Performance-minded code with clean structure behind it.",
-    icon: "code",
-    color: "#8b5cff",
-  },
-  {
-    title: "Android OS / Custom ROM Development",
-    short: "Android & ROMs",
-    detail:
-      "LineageOS builds and kernel work across the Redmi Note 10S and OnePlus 7T.",
-    icon: "android",
-    color: "#22e1ff",
-  },
-  {
-    title: "UI/UX & Promotional Design",
-    short: "UI/UX & Promo",
-    detail: "Interfaces, thumbnails and promo assets in one consistent visual language.",
-    icon: "pen",
-    color: "#ff3d9a",
-  },
-  {
-    title: "Advanced Video Editing",
-    short: "Video Editing",
-    detail: "Competition-level edits. First place at the Video Editing League 2025.",
-    icon: "film",
-    color: "#ffb020",
-  },
+  { title: "C Programming", short: "C", detail: "Programming fundamentals, logic and problem solving.", icon: "chip", color: "#8b5cff" },
+  { title: "Python", short: "Python", detail: "Scripts, small utilities and problem solving.", icon: "terminal", color: "#22e1ff" },
+  { title: "Java", short: "Java", detail: "Object-oriented programming basics.", icon: "code", color: "#ffb020" },
+  { title: "JavaScript", short: "JavaScript", detail: "Making web pages interactive.", icon: "braces", color: "#ffd84d" },
+  { title: "Node.js", short: "Node.js", detail: "Server-side JavaScript and building backends.", icon: "server", color: "#4ade80" },
+  { title: "HTML & CSS", short: "HTML & CSS", detail: "Building and styling web pages.", icon: "globe", color: "#ff3d9a" },
+  { title: "SQL & DBMS", short: "SQL & DBMS", detail: "Relational databases and writing SQL queries.", icon: "database", color: "#22e1ff" },
+  { title: "Git & GitHub", short: "Git & GitHub", detail: "Version control and sharing code.", icon: "branch", color: "#8b5cff" },
+  { title: "Android & Custom ROMs", short: "Android ROMs", detail: "LineageOS builds and kernel work on Android devices.", icon: "android", color: "#ff3b4e" },
 ];
 
 export type Achievement = {
   title: string;
   body: string;
-  icon: "trophy" | "gamepad" | "chip" | "layers";
+  icon: IconName;
   year?: string;
 };
 
+// The milestones shown on the right side of the About section
 export const ACHIEVEMENTS: Achievement[] = [
   {
-    title: "First-Place Winner: Video Editing League 2025",
-    body: "Took first place in the league with a competition edit.",
-    icon: "trophy",
-    year: "2025",
+    title: "BCA at Govt. Degree College Pulwama",
+    body: "Studying the Bachelor of Computer Applications under the NEP curriculum at the University of Kashmir.",
+    icon: "cap",
   },
   {
-    title: "Competitive BGMI Player",
-    body: "Plays BGMI competitively, which shapes how I build tools for esports players.",
-    icon: "gamepad",
+    title: "Programming in C and Python",
+    body: "Learning core programming: logic, problem solving and writing clean code.",
+    icon: "terminal",
   },
   {
-    title: "Custom ROM and kernel builder",
-    body: "Builds and debugs LineageOS for the Redmi Note 10S and works on kernels for the OnePlus 7T.",
-    icon: "chip",
+    title: "Database Management Systems",
+    body: "Working with relational databases, SQL and database design.",
+    icon: "database",
   },
   {
-    title: "Software and hardware together",
-    body: "Scrimmed on the app side, ShockShield on the wiring side, with the operating system in between.",
-    icon: "layers",
+    title: "Digital Technology Solutions",
+    body: "Studying how digital tools and technology solve practical problems.",
+    icon: "globe",
+  },
+  {
+    title: "Red Pulse Kashmir",
+    body: "Building an emergency home healthcare platform for Kashmir. Currently in development.",
+    icon: "pulse",
   },
 ];

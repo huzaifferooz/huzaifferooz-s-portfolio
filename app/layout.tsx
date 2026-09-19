@@ -6,9 +6,9 @@ import Nav from "@/components/Nav";
 import BackgroundLayer from "@/components/BackgroundLayer";
 
 export const metadata: Metadata = {
-  title: "Huzaif Ferooz | Software Developer",
+  title: "Huzaif Ferooz | BCA Student & Developer",
   description:
-    "Portfolio of Huzaif Ferooz, a software developer building esports apps, custom Android ROMs and hardware safety systems.",
+    "Portfolio of Huzaif Ferooz, a BCA student at Govt. Degree College Pulwama, learning and building software.",
 };
 
 export const viewport: Viewport = {

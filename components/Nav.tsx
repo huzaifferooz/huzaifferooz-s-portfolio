@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion";
 import { scrollToId } from "@/lib/lenis";
+import { PROJECTS } from "@/lib/data";
 
 const LINKS: [string, string][] = [
-  ["Work", "projects"],
+  ...(PROJECTS.length ? ([["Work", "projects"]] as [string, string][]) : []),
   ["Skills", "skills"],
   ["About", "about"],
   ["Contact", "contact"],

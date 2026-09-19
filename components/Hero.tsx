@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import LiquidButton from "./LiquidButton";
 import { scrollToId } from "@/lib/lenis";
-import { SITE } from "@/lib/data";
+import { PROJECTS, SITE } from "@/lib/data";
 
 const HeroScene = dynamic(() => import("./three/HeroScene"), { ssr: false });
 
@@ -72,7 +72,9 @@ export default function Hero() {
           transition={{ delay: 2.5, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="pointer-events-auto mt-9"
         >
-          <LiquidButton onClick={() => scrollToId("projects")}>View Projects</LiquidButton>
+          <LiquidButton onClick={() => scrollToId(PROJECTS.length ? "projects" : "about")}>
+            {PROJECTS.length ? "View Projects" : "About me"}
+          </LiquidButton>
         </motion.div>
       </div>
     </section>

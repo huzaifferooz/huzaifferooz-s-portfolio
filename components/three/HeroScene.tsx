@@ -41,7 +41,7 @@ function rrPath(g: CanvasRenderingContext2D, x: number, y: number, w: number, h:
   g.closePath();
 }
 
-// Draws a Scrimmed-style app screen onto a canvas used as the phone display
+// Draws a Red Pulse Kashmir app screen onto a canvas used as the phone display
 function makeScreenTexture() {
   const w = 512;
   const h = 1024;
@@ -51,9 +51,9 @@ function makeScreenTexture() {
   const g = c.getContext("2d")!;
 
   const bg = g.createLinearGradient(0, 0, w, h);
-  bg.addColorStop(0, "#1a1140");
+  bg.addColorStop(0, "#3a0a16");
   bg.addColorStop(0.55, "#0a0c1c");
-  bg.addColorStop(1, "#062733");
+  bg.addColorStop(1, "#120612");
   g.fillStyle = bg;
   g.fillRect(0, 0, w, h);
 
@@ -64,54 +64,100 @@ function makeScreenTexture() {
     g.fillStyle = rg;
     g.fillRect(0, 0, w, h);
   };
-  orb(120, 220, 280, "rgba(139,92,255,.55)");
-  orb(430, 780, 320, "rgba(34,225,255,.35)");
+  orb(120, 220, 280, "rgba(255,59,78,.45)");
+  orb(430, 800, 320, "rgba(139,92,255,.3)");
 
   g.fillStyle = "rgba(255,255,255,.85)";
   g.font = "600 26px system-ui, sans-serif";
   g.fillText("9:41", 44, 66);
 
   g.font = "800 58px system-ui, sans-serif";
-  g.fillText("Scrimmed", 44, 196);
+  g.fillText("Red Pulse", 44, 196);
   g.font = "500 26px system-ui, sans-serif";
   g.fillStyle = "rgba(255,255,255,.6)";
-  g.fillText("Find your next squad", 44, 240);
+  g.fillText("Emergency care at home", 44, 240);
 
-  const card = (y: number, handle: string, role: string, col: string) => {
-    rrPath(g, 36, y, 440, 150, 30);
-    g.fillStyle = "rgba(255,255,255,.08)";
-    g.fill();
-    g.strokeStyle = "rgba(255,255,255,.16)";
-    g.lineWidth = 2;
-    g.stroke();
+  // map panel
+  g.save();
+  rrPath(g, 36, 290, 440, 330, 30);
+  g.fillStyle = "rgba(255,255,255,.06)";
+  g.fill();
+  g.clip();
+  g.strokeStyle = "rgba(255,255,255,.07)";
+  g.lineWidth = 2;
+  for (let x = 36; x <= 476; x += 55) {
     g.beginPath();
-    g.arc(110, y + 75, 40, 0, Math.PI * 2);
-    const ag = g.createLinearGradient(70, y, 150, y + 150);
-    ag.addColorStop(0, col);
-    ag.addColorStop(1, "#22e1ff");
-    g.fillStyle = ag;
-    g.fill();
-    g.fillStyle = "#fff";
-    g.font = "700 30px system-ui, sans-serif";
-    g.fillText(handle, 172, y + 66);
-    g.fillStyle = "rgba(255,255,255,.6)";
-    g.font = "500 24px system-ui, sans-serif";
-    g.fillText(role, 172, y + 106);
-  };
-  card(300, "@nova", "IGL · Conqueror", "#8b5cff");
-  card(478, "@vex", "Entry · Ace", "#ff3d9a");
-  card(656, "@lumen", "Support · Crown", "#22e1ff");
+    g.moveTo(x, 290);
+    g.lineTo(x, 620);
+    g.stroke();
+  }
+  for (let y = 290; y <= 620; y += 55) {
+    g.beginPath();
+    g.moveTo(36, y);
+    g.lineTo(476, y);
+    g.stroke();
+  }
+  [80, 140, 200].forEach((r, i) => {
+    g.beginPath();
+    g.arc(256, 400, r, 0, Math.PI * 2);
+    g.strokeStyle = `rgba(255,59,78,${0.5 - i * 0.14})`;
+    g.lineWidth = 3;
+    g.stroke();
+  });
+  g.beginPath();
+  g.arc(256, 400, 26, 0, Math.PI * 2);
+  g.fillStyle = "#ff3b4e";
+  g.fill();
+  g.strokeStyle = "#fff";
+  g.lineWidth = 6;
+  g.lineCap = "round";
+  g.beginPath();
+  g.moveTo(256, 386);
+  g.lineTo(256, 414);
+  g.moveTo(242, 400);
+  g.lineTo(270, 400);
+  g.stroke();
+  // heartbeat line
+  g.strokeStyle = "#ff3b4e";
+  g.lineWidth = 6;
+  g.lineJoin = "round";
+  g.beginPath();
+  g.moveTo(36, 560);
+  g.lineTo(190, 560);
+  g.lineTo(215, 510);
+  g.lineTo(245, 600);
+  g.lineTo(275, 530);
+  g.lineTo(295, 560);
+  g.lineTo(476, 560);
+  g.stroke();
+  g.restore();
 
-  rrPath(g, 36, 860, 440, 80, 40);
+  // location card
+  rrPath(g, 36, 650, 440, 130, 30);
+  g.fillStyle = "rgba(255,255,255,.08)";
+  g.fill();
+  g.strokeStyle = "rgba(255,255,255,.16)";
+  g.lineWidth = 2;
+  g.stroke();
+  g.fillStyle = "#fff";
+  g.font = "700 30px system-ui, sans-serif";
+  g.textAlign = "left";
+  g.fillText("Location detected", 72, 712);
+  g.fillStyle = "rgba(255,255,255,.6)";
+  g.font = "500 24px system-ui, sans-serif";
+  g.fillText("Kashmir", 72, 750);
+
+  // button
+  rrPath(g, 36, 830, 440, 90, 45);
   const bt = g.createLinearGradient(36, 0, 476, 0);
-  bt.addColorStop(0, "#8b5cff");
-  bt.addColorStop(1, "#22e1ff");
+  bt.addColorStop(0, "#ff3b4e");
+  bt.addColorStop(1, "#ff3d9a");
   g.fillStyle = bt;
   g.fill();
-  g.fillStyle = "#05060b";
-  g.font = "800 28px system-ui, sans-serif";
+  g.fillStyle = "#fff";
+  g.font = "800 30px system-ui, sans-serif";
   g.textAlign = "center";
-  g.fillText("Send scrim invite", 256, 911);
+  g.fillText("Request help", 256, 887);
 
   const tex = new THREE.CanvasTexture(c);
   tex.colorSpace = THREE.SRGBColorSpace;

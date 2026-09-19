@@ -6,7 +6,15 @@ export type IconName =
   | "trophy"
   | "gamepad"
   | "chip"
-  | "layers";
+  | "layers"
+  | "terminal"
+  | "globe"
+  | "database"
+  | "branch"
+  | "server"
+  | "braces"
+  | "cap"
+  | "pulse";
 
 export function Icon({
   name,
@@ -70,6 +78,58 @@ export function Icon({
           <rect x="6" y="6" width="12" height="12" rx="2" />
           <rect x="9.5" y="9.5" width="5" height="5" rx="1" />
           <path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4" />
+        </svg>
+      );
+    case "terminal":
+      return (
+        <svg {...p}>
+          <path d="m4 17 6-5-6-5M12 19h8" />
+        </svg>
+      );
+    case "globe":
+      return (
+        <svg {...p}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+        </svg>
+      );
+    case "database":
+      return (
+        <svg {...p}>
+          <ellipse cx="12" cy="6" rx="8" ry="3" />
+          <path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" />
+        </svg>
+      );
+    case "branch":
+      return (
+        <svg {...p}>
+          <path d="M6 3v12M18 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM18 9a9 9 0 0 1-9 9" />
+        </svg>
+      );
+    case "server":
+      return (
+        <svg {...p}>
+          <rect x="3" y="4" width="18" height="7" rx="2" />
+          <rect x="3" y="13" width="18" height="7" rx="2" />
+          <path d="M7 7.5h.01M7 16.5h.01" />
+        </svg>
+      );
+    case "braces":
+      return (
+        <svg {...p}>
+          <path d="M8 4c-2 0-3 1-3 3v2c0 1.5-1 3-3 3 2 0 3 1.5 3 3v2c0 2 1 3 3 3M16 4c2 0 3 1 3 3v2c0 1.5 1 3 3 3-2 0-3 1.5-3 3v2c0 2-1 3-3 3" />
+        </svg>
+      );
+    case "cap":
+      return (
+        <svg {...p}>
+          <path d="m2 9 10-5 10 5-10 5L2 9ZM6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5M22 9v6" />
+        </svg>
+      );
+    case "pulse":
+      return (
+        <svg {...p}>
+          <path d="M3 12h4l2-6 4 12 2-6h6" />
         </svg>
       );
     case "layers":
