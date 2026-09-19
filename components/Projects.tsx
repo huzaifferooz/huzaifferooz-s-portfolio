@@ -109,24 +109,12 @@ function Scroller() {
           <h2 className="font-display text-3xl font-extrabold sm:text-5xl">Projects</h2>
         </div>
         <motion.div ref={track} style={{ x }} className="flex w-max items-center gap-[4vw] px-[6vw] will-change-transform">
-         {PROJECTS.map((p) => (
-            <div key={p.id} className="relative shrink-0">
-              
-              {/* 1. Your card stays exactly as it originally was */}
-              <ProjectCard
-                p={p}
-                className="h-[66svh] max-h-[640px] min-h-[440px] w-[82vw] sm:w-[62vw] lg:w-[44vw] xl:w-[38vw]"
-              />
-              
-              {/* 2. An invisible link that stretches over the entire card */}
-              <a
-                href={p.link || '#'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute inset-0 z-10"
-              />
-
-            </div>
+          {PROJECTS.map((p) => (
+            <ProjectCard
+              key={p.id}
+              p={p}
+              className="h-[66svh] max-h-[640px] min-h-[440px] w-[82vw] shrink-0 sm:w-[62vw] lg:w-[44vw] xl:w-[38vw]"
+            />
           ))}
         </motion.div>
         <div className="mx-[6vw] flex items-center gap-4">
