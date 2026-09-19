@@ -110,15 +110,16 @@ function Scroller() {
         </div>
         <motion.div ref={track} style={{ x }} className="flex w-max items-center gap-[4vw] px-[6vw] will-change-transform">
           {PROJECTS.map((p) => (
-            <a
-              key={p.id}
-              href={p.link || '#'}
-              target="_blank"
-              rel="noopener noreferrer"
+       <a
+            key={p.id}
+            href={p.link || '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block h-[66svh] max-h-[640px] min-h-[440px] w-[82vw] shrink-0 sm:w-[62vw] lg:w-[44vw] xl:w-[38vw]"
           >
             <ProjectCard
               p={p}
-              className="h-[66svh] max-h-[640px] min-h-[440px] w-[82vw] shrink-0 sm:w-[62vw] lg:w-[44vw] xl:w-[38vw]"
+              className="h-full w-full"
             />
           </a>
         ))}
